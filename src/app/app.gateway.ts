@@ -3,8 +3,8 @@ import { Logger } from '@nestjs/common';
 import { OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Socket, Server } from 'socket.io';
 
-@WebSocketGateway()
-export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+@WebSocketGateway(8800, { namespace: 'events'})
+export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {    
 
  @WebSocketServer() server: Server;
  private logger: Logger = new Logger('AppGateway');
@@ -15,7 +15,7 @@ export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGateway
  }
 
  afterInit(server: Server) {
-  this.logger.log('Init');
+     this.logger.log('Init');     
  }
 
  handleDisconnect(client: Socket) {
