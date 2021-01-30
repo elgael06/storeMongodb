@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
-export type classificarionDocument = classificarion & Document; 
+export type classificationModelDocument = classificationModel & Document; 
 
 @Schema()
-export class classificarion {
+export class classificationModel {
     @Prop({ required: true,unique:true })
     name: string;
 }
 
-export const classificarionScheme = SchemaFactory.createForClass(classificarion);
+export const classificationModelScheme = SchemaFactory.createForClass(classificationModel);

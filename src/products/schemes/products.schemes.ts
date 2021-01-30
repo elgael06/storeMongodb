@@ -22,7 +22,7 @@ export class Product {
     modificDate: Date;
     @Prop({ required: true, type: Array< Types.ObjectId | String>() })
     usersModific: Array< Types.ObjectId | String>;
-    @Prop({ required: false, default:'',ref:family.name })
+    @Prop({ required: false, default:'',ref:family.name,type:Types.ObjectId })
     family: Types.ObjectId|string;
 }
 

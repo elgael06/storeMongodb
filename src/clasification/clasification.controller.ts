@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ClasificationService } from './clasification.service';
 import { CreateClasificationDto } from './dto/create-clasification.dto';
 import { UpdateClasificationDto } from './dto/update-clasification.dto';
 
 @Controller('clasification')
+@UsePipes(new ValidationPipe())
 export class ClasificationController {
   constructor(private readonly clasificationService: ClasificationService) {}
 
@@ -13,8 +14,8 @@ export class ClasificationController {
   }
 
   @Get()
-  findAll() {
-    return this.clasificationService.findAll();
+  async findAll() {
+    return await this.clasificationService.findAll();
   }
 
   @Get(':id')
