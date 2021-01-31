@@ -20,16 +20,16 @@ export class ClasificationController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.clasificationService.findOne(+id);
+    return this.clasificationService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateClasificationDto: UpdateClasificationDto) {
-    return this.clasificationService.update(+id, updateClasificationDto);
+  async update(@Param('id') id: string, @Body() updateClasificationDto: UpdateClasificationDto):Promise<Object> {
+    return this.clasificationService.update(id, updateClasificationDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.clasificationService.remove(+id);
+    return this.clasificationService.remove(id);
   }
 }
